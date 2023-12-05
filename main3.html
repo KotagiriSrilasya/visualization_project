@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Plot Viewer</title>
+    <script>
+        function loadPlot() {
+            var selectedPlot = document.getElementById('plot-selector').value;
+            document.getElementById('plot-frame').src = selectedPlot;
+        }
+
+        function menu_value(value, containerId, allGraphsId, dataset) {
+            let iframe = document.createElement('iframe');
+            let container = document.getElementById(containerId);
+
+            if (dataset === 1) {
+                container.innerHTML = '';
+            }
+
+            switch (value) {
+                case 'bar':
+                case 'heat':
+                case 'fuzzer':
+                case 'exploit':
+                case 'PCA':
+                case 'Kmeans':
+                case 'Kmediod':
+                case 'Alpha':
+                case 'Umap-Kemdiod':
+                    iframe.src = `${value}${dataset}.html`;
+                    break;
+                case 'All':
+                    displayAllPlots(containerId, allGraphsId);
+                    return;
+                default:
+                    return;
+            }
+
+            container.append(iframe);
+        }
+
+        function displayAllPlots(containerId, allGraphsId) {
+            let container = document.getElementById(containerId);
+            container.innerHTML = '';
+
+            const fullFramePlots = [
+                'bargraph',
+                'HeatMaps',
+                'alpha',
+                'Nfplot',
+                'NEPlot',
+                'pca3d',
+                'umap3d',
+                'Kmeans',
+                'UMAP_Kmedoids_Centroids'
+            ];
+
+            const div = document.getElementById(allGraphsId);
+            div.className = 'all-graphs-visible';
+            container.append(div);
+        }
+    </script>
+
+    <style>
+        body {
+            display: flex;
+        }
+
+        .menu_bar {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 15%;
+        }
+
+        .graph-container {
+            width: 40%;
+        }
+
+        .all-graphs {
+            display: none;
+        }
+
+        iframe {
+            width: 100%;
+            height: 50vh;
+        }
+
+        button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: rgb(93, 0, 139);
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        h2 {
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: darkblue;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- First dataset -->
+    <div class="menu_bar">
+        <h2>Select a Plot to Display</h2>
+        <button onclick="menu_value('bar', 'graph-container', 'all-graphs', 1)">
+            Bar Graph
+        </button>
+        <button onclick="menu_value('heat', 'graph-container', 'all-graphs', 1)">
+            Heat Maps
+        </button>
+        <button onclick="menu_value('fuzzer', 'graph-container', 'all-graphs', 1)">
+            Normal VS fuzzer
+        </button>
+        <button onclick="menu_value('exploit', 'graph-container', 'all-graphs', 1)">
+            Normal VS exploit
+        </button>
+        <button onclick="menu_value('PCA', 'graph-container', 'all-graphs', 1)">
+            PCA 3d
+        </button>
+        <button onclick="menu_value('Kmeans', 'graph-container', 'all-graphs', 1)">
+            Kmeans
+        </button>
+        <button onclick="menu_value('Kmediod', 'graph-container', 'all-graphs', 1)">
+            Kmediod
+        </button>
+        <button onclick="menu_value('Alpha', 'graph-container', 'all-graphs', 1)">
+            Alpha graphs
+        </button>
+        <button onclick="menu_value('Umap-Kemdiod', 'graph-container', 'all-graphs', 1)">
+            UMAP Kmediod
+        </button>
+        <button onclick="menu_value('All', 'graph-container', 'all-graphs', 1)">
+            All
+        </button>
+    </div>
+
+    <div class="graph-container" id="graph-container">
+        <iframe id="plot-frame" src="bargraph1.html"></iframe>
+    </div>
+
+    <div class="all-graphs" id="all-graphs">
+        <iframe id="plot-frame" src="bargraph1.html"></iframe>
+        <iframe id="plot-frame" src="HeatMaps1.html"></iframe>
+        <div style="display: flex;">
+            <iframe id="plo-frame" src="alpha1.html"></iframe>
+            <iframe id="plot-frame" src="alpha2.html"></iframe>
+        </div>
+        <div style="display: flex;">
+            <iframe id="plo-frame" src="Nfplot1.html"></iframe>
+            <iframe id="plot-frame" src="NEplot1.html"></iframe>
+        </div>
+        <div style="display: flex;">
+            <iframe id="plo-frame" src="pca3d1.html"></iframe>
+            <iframe id="plot-frame" src="umap3d1.html"></iframe>
+        </div>
+        <div style="display: flex;">
+            <iframe id="plo-frame" src="Kmeans1.html"></iframe>
+            <iframe id="plot-frame" src="UMAP_Kmedoids_Centroids1.html"></iframe>
+        </div>
+    </div>
+
+    <!-- Second dataset -->
+    <div class="menu_bar">
+        <h2>Select a Plot to Display (Dataset 2)</h2>
+        <button onclick="menu_value('bar2', 'graph-container-2', 'all-graphs-2', 2)">Bar Graph</button>
+        <button onclick="menu_value('heat2', 'graph-container-2', 'all-graphs-2', 2)">Heat Maps</button>
+        <button onclick="menu_value('fuzzer2', 'graph-container-2', 'all-graphs-2', 2)">Normal VS fuzzer</button>
+        <button onclick="menu_value('exploit2', 'graph-container-2', 'all-graphs-2', 2)">Normal VS exploit</button>
+        <button onclick="menu_value('PCA2', 'graph-container-2', 'all-graphs-2', 2)">PCA 3d</button>
+        <button onclick="menu_value('Kmeans2', 'graph-container-2', 'all-graphs-2', 2)">Kmeans</button>
+        <button onclick="menu_value('Kmediod2', 'graph-container-2', 'all-graphs-2', 2)">Kmediod</button>
+        <button onclick="menu_value('Alpha2', 'graph-container-2', 'all-graphs-2', 2)">Alpha graphs</button>
+        <button onclick="menu_value('Umap-Kemdiod2', 'graph-container-2', 'all-graphs-2', 2)">UMAP Kmediod</button>
+        <button onclick="menu_value('All2', 'graph-container-2', 'all-graphs-2', 2)">All</button>
+    </div>
+
+    <div class="graph-container" id="graph-container-2">
+        <iframe id="plot-frame" src="bargraph2.html"></iframe>
+    </div>
+
+    <div class="all-graphs" id="all-graphs-2">
+        <iframe id="plot-frame" src="bargraph2.html"></iframe>
+        <iframe id="plot-frame" src="HeatMaps2.html"></iframe>
+        <div style="display: flex;">
+            <iframe id="plot-frame" src="alpha12.html"></iframe>
+            <iframe id="plot-frame" src="alpha22.html"></iframe>
+        </div>
+        <div style="display: flex;">
+            <iframe id="plot-frame" src="Nfplot2.html"></iframe>
+            <iframe id="plot-frame" src="NEplot2.html"></iframe>
+        </div>
+        <div style="display: flex;">
+            <iframe id="plot-frame" src="pca3d2.html"></iframe>
+            <iframe id="plot-frame" src="umap3d2.html"></iframe>
+        </div>
+        <div style="display: flex;">
+            <iframe id="plot-frame" src="Kmeans2.html"></iframe>
+            <iframe id="plot-frame" src="UMAP_Kmedoids_Centroids2.html"></iframe>
+        </div>
+    </div>
+</body>
+
+</html>

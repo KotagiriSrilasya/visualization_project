@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Plot Viewer</title>
+    <script>
+        function loadPlot() {
+        
+            var selectedPlot = document.getElementById('plot-selector').value;
+            document.getElementById('plot-frame').src = selectedPlot;
+        }
+        function menu_value(value)
+        {
+            let iframe = document.createElement('iframe');
+            let container=document.getElementById('graph-container');
+            if(value=='bar')
+            {
+                iframe.src='bargraph.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='heat')
+            {
+                iframe.src='HeatMaps.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='fuzzer')
+            {
+                iframe.src='Nfplot.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='exploit')
+            {
+                iframe.src='NEPlot.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='PCA')
+            {
+                iframe.src='pca3d.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+	    if(value=='PCA31')
+            {
+                iframe.src='pca3d_analysis.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+	    if(value=='tsne')
+            {
+                iframe.src='tsne.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='Kmeans')
+            {
+                iframe.src='Kmeans.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='Kmediod')
+            {
+                iframe.src='umap3d.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='Alpha')
+            {
+                iframe.src='alpha.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='Umap-Kemdiod')
+            {
+                iframe.src='UMAP_Kmedoids_Centroids.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='All')
+            {
+               displayAllPlots()
+
+            }
+	    if(value=='bar2')
+            {
+               displayAllPlots()
+	       iframe.src='bargraph.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+	    if(value=='heat2')
+            {
+               displayAllPlots()
+	       iframe.src='HeatMaps2.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+	    
+            if(value=='fuzzer2')
+            {
+                iframe.src='Nfplot2.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='exploit2')
+            {
+                iframe.src='NEPlot2.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='PCA2')
+            {
+                iframe.src='pca3d2.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+	    if(value=='PCA3')
+            {
+                iframe.src='pca3d_pod.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+	    if(value=='tsne2')
+            {
+                iframe.src='tsne2.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='Kmeans2')
+            {
+                iframe.src='Kmeans2.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='Kmediod2')
+            {
+                iframe.src='umap3d2.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='Alpha2')
+            {
+                iframe.src='alphac.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='Umap-Kemdiod2')
+            {
+                iframe.src='UMAP_Kmedoids_Centroids2.html';
+                container.innerHTML='';
+                document.getElementById('graph-container').append(iframe);
+
+            }
+            if(value=='All2')
+            {
+               displayAllPlots2()
+
+            }
+
+
+        }
+        function displayAllPlots() {
+    let container = document.getElementById('graph-container');
+    container.innerHTML = '';
+    const fullFramePlots = ['bargraph.html', 'HeatMaps.html', 'alpha.html', 'Nfplot.html', 'NEPlot.html', 'pca3d.html','pca3d_analysis.html','tsne.html', 'umap3d.html', 'Kmeans.html', 'UMAP_Kmedoids_Centroids.html'];
+    let div = document.getElementById('all-graphs');
+    if (div) {
+        div.className = 'all-graphs-visible';
+        container.append(div);
+    }
+}
+
+function displayAllPlots2() {
+    let container = document.getElementById('graph-container');
+    container.innerHTML = '';
+    const fullFramePlots = ['bargraph2.html', 'HeatMaps2.html', 'alpha2.html', 'Nfplot2.html', 'NEPlot2.html', 'pca3d2.html','pca3d_pod.html','tsne2.html', 'umap3d2.html', 'Kmeans2.html', 'UMAP_Kmedoids_Centroids2.html'];
+    let div = document.getElementById('all-graphs2');
+    if (div) {
+        div.className = 'all-graphs-visible';
+        container.append(div);
+    }
+}
+
+    </script>
+    <style>
+    body{
+    display:flex;
+    }
+    .menu_bar{
+    display:flex;
+    flex-direction:column;
+    align-items: flex-start;
+    width:15%;
+    }
+    .graph-container{
+        width: 80%;
+    }
+    .all-graphs{
+        display: none;
+    }
+    iframe{
+        width: 100%;
+        height: 100vh;
+    }
+        button{
+        	border: none;
+            background:none;
+            cursor:pointer;
+            color: darkred;
+            font-weight:bold;
+            font-size: 15px;
+        }
+        h2{
+            border: none;
+            background:none;
+            cursor:pointer;
+            color: darkblue;
+            font-weight:bold;
+            font-size: 20px;
+		 margin-bottom:2px; /* Adjust this value as needed */
+        }
+	 h4 {
+        margin-bottom: 1px; /* Adjust this value as needed */
+    }
+
+        p{
+	 color: darkred;
+            font-weight:bold;
+            font-size: 50px;
+	}
+    </style>
+</head>
+
+<body>
+    <div class="menu_bar">
+    	<h2>UNSW-NB15 DATASET VISUALIZATIONS</h2>
+	<h4>Select a plot-type to display</h4>
+         <button onclick="menu_value('All')">
+            DASHBOARD
+        </button>
+        <button onclick="menu_value('bar')">
+            Bar Graph
+        </button>
+        <button onclick="menu_value('heat')">
+            Heat Maps
+        </button>
+        <button onclick="menu_value('fuzzer')">
+            Normal VS fuzzer
+        </button>
+        <button onclick="menu_value('exploit')">
+            Normal VS exploit
+        </button>
+        <button onclick="menu_value('PCA')">
+            PCA 3d
+        </button>
+	<button onclick="menu_value('PCA31')">
+            	Single Attribute PCA
+        </button>
+	<button onclick="menu_value('tsne')">
+            T-SNE
+        </button>
+        <button onclick="menu_value('Kmeans')">
+            Kmeans
+        </button>
+        <button onclick="menu_value('Kmediod')">
+            Kmediod
+        </button>
+        <button onclick="menu_value('Alpha')">
+            Alpha graphs
+        </button>
+        <button onclick="menu_value('Umap-Kemdiod')">
+            UMAP Kmediod
+        </button>
+       
+	<h2>KDD DATASET VISUALIZATIONS</h2>
+	<h4>Select a plot-type to display</h4>
+	
+        
+        
+        <button onclick="menu_value('bar2')">
+            Bar Graph
+        </button>
+        <button onclick="menu_value('heat2')">
+            Heat Maps
+        </button>
+        <button onclick="menu_value('fuzzer2')">
+            Normal VS Neptune
+        </button>
+        <button onclick="menu_value('exploit2')">
+            Normal VS Back
+        </button>
+        <button onclick="menu_value('PCA2')">
+            PCA 3d
+        </button>
+	<button onclick="menu_value('PCA3')">
+            	Single Attribute PCA
+        </button>
+	<button onclick="menu_value('tsne2')">
+            T-SNE
+        </button>
+        <button onclick="menu_value('Kmeans2')">
+            Kmeans
+        </button>
+        <button onclick="menu_value('Kmediod2')">
+            Kmediod
+        </button>
+        <button onclick="menu_value('Alpha2')">
+            Alpha graphs
+        </button>
+        <button onclick="menu_value('Umap-Kemdiod2')">
+            UMAP Kmediod
+        </button>
+	<button onclick="menu_value('All2')">
+            DASHBOARD
+        </button>
+        
+        
+    </div>
+    <div class="graph-container" id="graph-container">
+    <center>
+    <p id="default-text">Visualizations of Network Intrusion Data</p></center>
+</div>
+
+
+    <div class="all-graphs" id="all-graphs">
+        <iframe id="plot-frame" src="bargraph.html"></iframe>
+        <iframe id="plot-frame" src="HeatMaps.html"></iframe>
+        <div style="display: flex;">
+            <iframe id="plo-frame" src="alpha1.html"></iframe>
+            <iframe id="plot-frame" src="alpha2.html"></iframe>
+        </div>
+        <div style="display: flex;">
+            <iframe id="plo-frame" src="Nfplot.html"></iframe>
+            <iframe id="plot-frame" src="NEplot.html"></iframe>
+        </div>
+        <div style="display: flex;">
+            <iframe id="plo-frame" src="pca3d.html"></iframe>
+            <iframe id="plot-frame" src="umap3d.html"></iframe>
+        </div>
+	<iframe id="plot-frame" src="pca3d_analysis.html"></iframe>
+	<iframe id="plot-frame" src="tsne.html"></iframe>
+        <div style="display: flex;">
+            <iframe id="plo-frame" src="Kmeans.html"></iframe>
+            <iframe id="plot-frame" src="UMAP_Kmedoids_Centroids.html"></iframe>
+        </div>
+    </div>
+    <div class="all-graphs" id="all-graphs2">
+        <iframe id="plot-frame" src="bargraph2.html"></iframe>
+        <iframe id="plot-frame" src="HeatMaps2.html"></iframe>
+        <div style="display: flex;">
+            <iframe id="plo-frame" src="alpha12.html"></iframe>
+            <iframe id="plot-frame" src="alpha22.html"></iframe>
+        </div>
+        <div style="display: flex;">
+            <iframe id="plo-frame" src="Nfplot2.html"></iframe>
+            <iframe id="plot-frame" src="NEplot2.html"></iframe>
+        </div>
+        <div style="display: flex;">
+            <iframe id="plo-frame" src="pca3d2.html"></iframe>
+            <iframe id="plot-frame" src="umap3d2.html"></iframe>
+        </div>
+	<iframe id="plot-frame" src="pca3d_pod.html"></iframe>
+	<iframe id="plot-frame" src="tsne2.html"></iframe>
+        <div style="display: flex;">
+            <iframe id="plo-frame" src="Kmeans2.html"></iframe>
+            <iframe id="plot-frame" src="UMAP_Kmedoids_Centroids2.html"></iframe>
+        </div>
+    </div>
+</body>
+
+</html>
